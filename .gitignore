@@ -1,19 +1,26 @@
 /////////////////////////////////////////////////Deck class first then the card class is listed below. 
 
+// *** DYLAN *** : If you can move this into a .java file instead of the .gitignore, it would be easier to read.
+
 import java.util.Random;
 
 
 public class Deck {
 
   public static void main(String[] args){
-		Deck adeck=new Deck();
+  	Deck adeck=new Deck();
 		adeck.shuffleDeck();
 	}
 	
 	
 	private Card[] cardDeck=new Card[52];
+	
+	//*** DYLAN **** : the suits should be publicly available, static variables. That way you can do the comparisons later.
 	private String[] suits={"clubs","diamonds","hearts","spades"};
+	
+	//*** DYLAN **** : It looks like this line is not used, the Card class takes Integers.
 	private String [] cardNumber={"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+	
 	Random rgen = new Random();  
 
 	public Deck(){
@@ -55,6 +62,8 @@ public class Deck {
 		
 		//Then, shuffle it
 		for (Card aCard: cardDeck) {
+			// *** DYLAN **** : This could be put in the card class, by overriding the toString Method
+      // then it would be System.out.println(aCard) anywhere you want to use it
 			System.out.println(aCard.getValue()+" of "+aCard.getSuit());
 		}
 		
