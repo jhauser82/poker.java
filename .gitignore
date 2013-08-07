@@ -1,4 +1,4 @@
-//Deck class first then the card class is listed below. 
+/////////////////////////////////////////////////Deck class first then the card class is listed below. 
 
 import java.util.Random;
 
@@ -73,7 +73,7 @@ public class Deck {
 
 
 
-//Card Class thnx to Bobby 
+////////////////////////////////////////////////////////////////Card Class thnx to Bobby 
 
 
 public class Card {
