@@ -4,16 +4,10 @@ import java.util.Random;
 
 
 public class Deck {
-
-  public static void main(String[] args){
-  	Deck adeck=new Deck();
-		adeck.shuffleDeck();
-	}
-	
 	
 	private Card[] cardDeck=new Card[52];
 	private String[] suits={"clubs","diamonds","hearts","spades"};
-	private String [] cardNumber={"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+	private int [] rank={2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 	Random rgen = new Random();  
 
 	public Deck(){
@@ -22,7 +16,7 @@ public class Deck {
 	}
 	
 	public Deck(Card[] cardsDeck){
-		this.cardsDeck = cardsDeck;
+		this.cardDeck = cardsDeck;
 		shuffleDeck();
 	}
 	
@@ -45,26 +39,34 @@ public class Deck {
 	}
 	
 	private Card[] shuffleDeck(){
-		//First, put them cards in the deck array
+		//Deck array
 		for (int i=0; i<cardDeck.length; i++) {
-		    int randomPosition = rgen.nextInt(cardsDeck.length);
+		    int randomPosition = rgen.nextInt(cardDeck.length);
 		    Card temp = cardDeck[i];
 		    cardDeck[i] = cardDeck[randomPosition];
 		    cardDeck[randomPosition] = temp;
 		}
 		
-		//Then, shuffle it
-		for (Card aCard: cardDeck) {
-			System.out.println(aCard.getValue()+" of "+aCard.getSuit());
+		//Shuffle the deck
+		for (Card card: cardDeck) {
+			System.out.println(card.getRank()+" of "+card.getSuit());
 		}
 		
 		
-		return cardsDeck;
+		return cardDeck;
 	}
 	
 	public static void main(String[] args){
 		Deck adeck=new Deck();
 		adeck.shuffleDeck();
+	}
+
+	public int [] getRank() {
+		return rank;
+	}
+
+	public void setRank(int [] rank) {
+		this.rank = rank;
 	}
 }
 
@@ -72,38 +74,46 @@ public class Deck {
 
 
 
-
 ////////////////////////////////////////////////////////////////Card Class thnx to Bobby 
 
-
 public class Card {
-  
-	private String suits;
-	private Integer cardNumber;//1-13
 
-	//public Card(){//gives you ace of spades
-		//this.value=1;
-		//this.suit="s";
-//	}
+	String suit;
+	int rank;
 	
-	public Card(String suits, Integer cardNumber){
-		this.cardNumber=cardNumber;
-		this.suits=suits;
+	public Card(){
+		
+	}
+	
+	public Card(String suit, int i){
+		this.suit = suit;
+		this.rank = i;
 	}
 
-	public String getSuits() {
-		return suits;
+	public String getSuit() {
+		return suit;
 	}
 
-	public void setSuits(String suits) {
-		this.suits = suits;
+	public void setSuit(String suit) {
+		this.suit = suit;
 	}
 
-	public Integer getCardNumber() {
-		return value;
+	public int getRank() {
+		return rank;
 	}
 
-	public void setCardNumber(Integer cardNumber) {
-		this.value = value;
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
+
+	public int getValue() {
+		return rank;
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+
+
 }
