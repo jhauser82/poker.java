@@ -1,3 +1,113 @@
+import java.util.Random;
+
+
+public class Deck {
+//fix this 
+private Card[] cardDeck = new Card[52];
+	
+	private String[] suits={"clubs","diamonds","hearts","spades"};
+	private int [] rank={ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+	Random rgen = new Random();  
+
+	public Deck(){
+		createDeck();
+		shuffleDeck();
+	}
+	
+	public Deck(Card[] cardsDeck){
+		this.cardDeck = cardsDeck;
+		shuffleDeck();
+	}
+	
+//	public Card[] getcardDeck() {
+//		return cardDeck;
+//	}
+
+//	public void setcardDeck(Card[] cardDeck) {
+//		this.cardDeck = cardDeck;
+//	}
+	
+	private void createDeck(){
+		for (int i = 0; i < 13; i++) {
+			for (int j = 0; j <4; j++) {
+				Card card=new Card(suits[j], i+1);
+				cardDeck[(i*4)+(j)]=card;
+				System.out.println((i*4)+(j+1));
+		}
+		}
+	}
+	
+	private Card[] shuffleDeck(){
+		//Deck array
+		for (int i=0; i<cardDeck.length; i++) {
+		    int randomPosition = rgen.nextInt(cardDeck.length);
+		    Card temp = cardDeck[i];
+		    cardDeck[i] = cardDeck[randomPosition];
+		    cardDeck[randomPosition] = temp;
+		}
+		
+		//Shuffle the deck
+		for (Card card1: cardDeck) {
+			System.out.println(card1.getRank()+" of "+card1.getSuit());
+		}
+		
+		
+		return cardDeck;
+	}
+	
+	public static void main(String[] args){
+		Deck deck1=new Deck();
+		deck1.shuffleDeck();
+	}
+
+	public int [] getRank() {
+		return rank;
+	}
+
+	public void setRank(int [] rank) {
+		this.rank = rank;
+	}
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	
+	private Card[] shuffleDeck(){
+		//Deck array
+		for (int i=0; i<cardDeck.length; i++) {
+		    int randomPosition = rgen.nextInt(cardDeck.length);
+		    Card temp = cardDeck[i];
+		    cardDeck[i] = cardDeck[randomPosition];
+		    cardDeck[randomPosition] = temp;
+		}
+		
+		//Shuffle the deck
+		for (Card card1: cardDeck) {
+			System.out.println(card1.getRank()+" of "+card1.getSuit());
+		}
+		
+		
+		return cardDeck;
+	}
+	
+	public static void main(String[] args){
+		Deck deck1=new Deck();
+		deck1.shuffleDeck();
+	}
+
+	public int [] getRank() {
+		return rank;
+	}
+
+	public void setRank(int [] rank) {
+		this.rank = rank;
+	}
+}
+
+
+
+
 /////////////////////////////////////////////////Deck class first then the card class is listed below. 
 
 import java.util.Random;
